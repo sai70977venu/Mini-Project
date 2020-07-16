@@ -14,6 +14,7 @@ var urlencodedparser=bodyParser.urlencoded({extended:false})
 app.use("/users/",urlencodedparser,auth);
 
 //running on the port
+let PORT = process.env.PORT || process.env.PUBLIC_PORT;
 app.listen(process.env.PUBLIC_PORT,() => {
     console.log("server connected", process.env.PUBLIC_PORT);
 })
