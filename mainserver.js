@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 const auth = require("./routes/auth");    //authentication router
 var app = express();
 var logger =require("./config/logger")
-require('dotenv').config();
+// require('dotenv').config();
 app.use(bodyParser.json());
 
 var urlencodedparser=bodyParser.urlencoded({extended:false})
