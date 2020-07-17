@@ -8,7 +8,7 @@ const auth = require("./routes/auth");    //authentication router
 const faculty = require("./routes/user");
 var app = express();
 var logger =require("./config/logger")
-require('dotenv').config();
+// require('dotenv').config();
 app.use(bodyParser.json());
 
 var urlencodedparser=bodyParser.urlencoded({extended:false})
