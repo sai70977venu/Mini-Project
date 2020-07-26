@@ -27,6 +27,23 @@ const getAll = async (req,res,next)=>{
     });
 }
 
+const getOne = async (req,res,next)=>{
+    logger.info("Get One Faculty Details ",req);
+    FacultyService.getOne(req.params)
+    .then(response => {
+        res.send(
+            response
+        );
+    })
+    .catch(err => {
+        res.send({
+            "success":false,
+            "error":err.message,
+            "status":401
+        });
+    });
+}
+
 const addFaculty = async (req, res, next) => {
     logger.info("Add Faculty Details",req);
     FacultyService.addFaculty(req.body)

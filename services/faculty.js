@@ -8,6 +8,10 @@ const getAll = async (params) => {
     return  await User.find({});
 }
 
+const getOne = async (params) => {
+    return  await User.find({email:params.email});
+}
+
 const addFaculty = async (params) =>{
     return await User.find({collageId:params.collageId})
    .exec()
