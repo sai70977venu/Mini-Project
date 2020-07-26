@@ -20,6 +20,7 @@ const authenticate = params =>{
                         return {
                             success:true,
                             userId:user[0]._id,
+                            userName:user[0].fullname,
                             status:200,
                             token
                         }

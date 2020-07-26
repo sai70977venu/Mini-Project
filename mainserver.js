@@ -6,10 +6,12 @@ const usermodel = require("./models/usermodel");
 var bodyParser = require('body-parser');
 const auth = require("./routes/auth");    //authentication router
 const faculty = require("./routes/user");
+const cors = require("cors");
 var app = express();
 var logger =require("./config/logger")
-// require('dotenv').config();
+require('dotenv').config();
 app.use(bodyParser.json());
+app.use(cors());
 
 var urlencodedparser=bodyParser.urlencoded({extended:false})
 app.use("/users/", urlencodedparser,auth);

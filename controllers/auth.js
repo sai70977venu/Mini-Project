@@ -10,7 +10,7 @@ const userService = require('../services/user');
 const { response } = require("express");
 const path= require("path")
 //login
-const login = async(req,res,next)=>{
+const login = async(req,res,next) => {
    logger.info("login ",req);
     authService.authenticate(req.body)
      .then(response => {
