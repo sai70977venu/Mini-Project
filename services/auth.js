@@ -21,6 +21,7 @@ const authenticate = params =>{
                             success:true,
                             userId:user[0]._id,
                             userName:user[0].fullname,
+                            email:user[0].email,
                             status:200,
                             token
                         }
