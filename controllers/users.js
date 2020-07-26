@@ -61,5 +61,6 @@ const addFaculty = async (req, res, next) => {
 
 module.exports = {
     getAll,
+    getOne,
     addFaculty
 }
