@@ -9,7 +9,7 @@ const faculty = require("./routes/user");
 const cors = require("cors");
 var app = express();
 var logger =require("./config/logger")
-require('dotenv').config();
+// require('dotenv').config();
 app.use(bodyParser.json());
 app.use(cors());
 
