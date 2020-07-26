@@ -37,5 +37,6 @@ const addFaculty = async (params) =>{
 
 module.exports = {
     getAll,
+    getOne,
     addFaculty
 }
