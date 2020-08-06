@@ -1,6 +1,7 @@
 
 const {usermodel} = require('../models/usermodel');
 const express = require("express");
+const { user } = require("../models/user");
 const bcrypt =require("bcrypt");
 const nodemailer =require("nodemailer");
 const { config } = require('winston');
@@ -13,21 +14,36 @@ const register = params =>{
         if (user.length >0){
             throw new Error('Registration failed. Email already exist.');
         }
-        else{
-             var pass = params.password
+        else {
+             var pass = params.password;
              params.password = bcrypt.hashSync(params.password, 10);
-                    
-                    var newuser = new usermodel(params);
-                    return newuser.save()
-                    .then(item => {
-                        params.password=pass;
-                        sendemail(params);
-                        return item;
-                    })
-                    .catch(err => {
-                        throw err;
-                    });
+             var authModel = {
+                fullname: params.fullname,
+                collageId: params.collageId,
+                email: params.email,
+                password: params.password
             }
+            var facultyModel = {
+                fullname: params.fullname,
+                collageId: params.collageId,
+                email: params.email,
+                qualification: params.qualification,
+                designation: params.designation,
+                department: params.department
+            }
+            var newFaculty = new user(facultyModel);
+            newFaculty.save();
+            var newuser = new usermodel(authModel);
+            return newuser.save()
+            .then(item => {
+                params.password=pass;
+                sendemail(params);
+                return item;
+            })
+            .catch(err => {
+                throw err;
+            });
+        }
     })
     .catch(err=>{
         throw err;
@@ -40,8 +56,8 @@ const sendemail = params => {
         host: 'smtp.gmail.com',
         auth: {
             type: "login",
-          user: process.env.email,
-          pass: process.env.password
+            user: process.env.email,
+            pass: process.env.password
         }
       });
     let mailOptions = {

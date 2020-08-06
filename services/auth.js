@@ -11,12 +11,13 @@ const { config } = require("process");
 
 //authenticate service
 const authenticate = params =>{
-    return usermodel.find({email:params.email}).exec().then(user=>{
+    return usermodel.find({email:params.email}).exec()
+        .then(user=>{
             if (user.length<1) throw new Error('Authentication failed. Email does not exist.');
             else{
                 if (! bcrypt.compareSync(params.password,user[0].password)) throw new Error('Authentication failed. wrong password');
                 else{
-                        const token = jwt.sign({email: user[0].email,userId:user[0]._id},"secret",{expiresIn:"1h"})
+                        const token = jwt.sign({email: user[0].email,userId:user[0]._id}, process.env.SECRET_KEY,{expiresIn:"1h"});
                         return {
                             success:true,
                             userId:user[0]._id,
@@ -26,8 +27,8 @@ const authenticate = params =>{
                             token
                         }
                     }
-                }
-   }).catch( err => {throw err;})
+                }})
+        .catch( err => {throw err;})
 }
 
 

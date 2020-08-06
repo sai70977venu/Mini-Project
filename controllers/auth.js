@@ -42,7 +42,7 @@ const forgotpassword =async(req,res,next)=>{
 
 //regiter
 const register = async(req,res,next)=>{
-    logger.info(" register",req);
+    logger.info("register",req);
     userService.register(req.body).then(response=>{
         res.send({
             success :true,

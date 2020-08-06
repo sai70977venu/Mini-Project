@@ -5,7 +5,7 @@ const nodemailer =require("nodemailer");
 const { config } = require('winston');
 
 const getAll = async (params) => {
-    return  await User.find({});
+    return  await User.find({ params });
 }
 
 const getOne = async (params) => {
