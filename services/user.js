@@ -1,7 +1,7 @@
 
 const {usermodel} = require('../models/usermodel');
 const express = require("express");
-const { user } = require("../models/user");
+const { userAuth } = require("../models/user");
 const bcrypt =require("bcrypt");
 const nodemailer =require("nodemailer");
 const { config } = require('winston');
@@ -32,7 +32,7 @@ const register = params =>{
                 designation: params.designation,
                 department: params.department
             }
-            var newFaculty = new user(facultyModel);
+            var newFaculty = new userAuth(facultyModel);
             newFaculty.save();
             var newuser = new usermodel(authModel);
             return newuser.save()
