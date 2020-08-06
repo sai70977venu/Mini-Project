@@ -7,6 +7,7 @@ const nodemailer =require("nodemailer");
 const { config } = require('winston');
 //create user
 const register = params =>{
+    console.log(params);
     return usermodel.find({email:params.email})
    .exec()
    .then(user=>
