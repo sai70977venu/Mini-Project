@@ -17,12 +17,9 @@ const authenticate = params =>{
             else{
                 if (! bcrypt.compareSync(params.password,user[0].password)) throw new Error('Authentication failed. wrong password');
                 else{
-                        const token = jwt.sign({email: user[0].email,userId:user[0]._id}, process.env.SECRET_KEY,{expiresIn:"1h"});
+                        const token = jwt.sign({email: user[0].email,userId:user[0]._id, userName:user[0].fullname}, process.env.SECRET_KEY,{expiresIn:"1h"});
                         return {
                             success:true,
-                            userId:user[0]._id,
-                            userName:user[0].fullname,
-                            email:user[0].email,
                             status:200,
                             token
                         }
