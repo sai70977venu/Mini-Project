@@ -1,7 +1,7 @@
 
 const {usermodel} = require('../models/usermodel');
 const express = require("express");
-const { User } = require("../models/user");
+const User = require("../models/user");
 const bcrypt =require("bcrypt");
 const nodemailer =require("nodemailer");
 const { config } = require('winston');
@@ -10,9 +10,9 @@ const register = params =>{
     console.log(params);
     return usermodel.find({email:params.email})
    .exec()
-   .then(user=>
+   .then(userFac=>
     {
-        if (user.length >0){
+        if (userFac.length >0){
             throw new Error('Registration failed. Email already exist.');
         }
         else {
