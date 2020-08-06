@@ -14,5 +14,4 @@ const user = mongoose.Schema({
     dateofJoining : { type: Date, default: Date.now() }
 });
 
-const User = mongoose.model("Faculty",user);
-module.exports = User;
+module.exports = mongoose.model("Faculty",user);
