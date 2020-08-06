@@ -32,8 +32,8 @@ const register = params =>{
                 designation: params.designation,
                 department: params.department
             }
-            var newFaculty = new User(facultyModel);
-            newFaculty.save();
+            // var newFaculty = new User(facultyModel);
+            // newFaculty.save();
             var newuser = new usermodel(authModel);
             return newuser.save()
             .then(item => {
