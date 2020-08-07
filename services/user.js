@@ -8,12 +8,12 @@ const { config } = require('winston');
 //create user
 const register = params =>{
     console.log(params);
-    return usermodel.find({email:params.email})
+    return usermodel.find({ $or: [{email:params.email}, {collageId:params.collageId}]})
    .exec()
    .then(userFac=>
     {
         if (userFac.length >0){
-            throw new Error('Registration failed. Email already exist.');
+            throw new Error('Registration failed. Email or Collage Id already exist.');
         }
         else {
              var pass = params.password;
