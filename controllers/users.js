@@ -31,6 +31,7 @@ const getOne = async (req,res,next)=>{
     logger.info("Get One Faculty Details ",req);
     FacultyService.getOne(req.params)
     .then(response => {
+        response['success'] = true;
         res.send(
             response
         );
