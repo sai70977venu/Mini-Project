@@ -28,7 +28,7 @@ const getAll = async (req,res,next)=>{
 
 const getBranch = async (req,res,next)=>{
     logger.info("Get Branch Faculty Details ",req);
-    FacultyService.getBranch(req.body)
+    FacultyService.getBranch(req.params)
     .then(response => {
         res.send(
             response
