@@ -26,6 +26,23 @@ const getAll = async (req,res,next)=>{
     });
 }
 
+const getBranch = async (req,res,next)=>{
+    logger.info("Get Branch Faculty Details ",req);
+    FacultyService.getBranch(req.body)
+    .then(response => {
+        res.send(
+            response
+        );
+    })
+    .catch(err => {
+        res.send({
+            "success":false,
+            "error":err.message,
+            "status":401
+        });
+    });
+}
+
 const getOne = async (req,res,next)=>{
     logger.info("Get One Faculty Details ",req);
     FacultyService.getOne(req.params)
@@ -95,5 +112,6 @@ module.exports = {
     getOne,
     addFaculty,
     addResearch,
-    addProject
+    addProject,
+    getBranch
 }

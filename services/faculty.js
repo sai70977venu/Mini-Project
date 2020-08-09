@@ -8,6 +8,10 @@ const getAll = async (params) => {
     return  await User.find({ });
 }
 
+const getBranch= async (params) => {
+    return  await User.find({ department:params.department });
+}
+
 const getOne = async (params) => {
     return  await User.find({email:params.email});
 }
@@ -93,5 +97,6 @@ module.exports = {
     getOne,
     addFaculty,
     addResearch,
-    addProject
+    addProject,
+    getBranch
 }

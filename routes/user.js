@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var controller = require("../controllers/users");
 
 router.get("/", controller.getAll);
+router.get("/:department", controller.getBranch);
 router.get("/:email", controller.getOne);
 router.post("/addFaculty", controller.addFaculty);
 router.post("/addResearch", controller.addResearch);
