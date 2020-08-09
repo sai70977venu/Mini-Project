@@ -36,6 +36,7 @@ const addFaculty = async (params) =>{
 }
 
 const addResearch = async (params) => {
+    console.log(params);
     return await User.find({ email:params.email })
     .exec()
     .then(user => {
