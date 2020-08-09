@@ -9,6 +9,7 @@ const user = mongoose.Schema({
     designation: { type: String, required: true },
     department: { type: String, required: true},
     research: [{ type: String }],
+    researchURL: [{ type: String }],
     projects: [{ type: String }],
     projectDesc: [{ type: String }],
     dateofJoining : { type: Date, default: Date.now() }
